@@ -1,0 +1,25 @@
+Table mainItem{
+  id int [pk, increment] 
+  name varchar
+  price decimal
+}
+
+Table sideItem {
+  id int [pk, increment] 
+  name varchar
+  price decimal
+}
+
+Table vegetable {
+  id int [pk, increment]
+  package varchar
+  price decimal
+}
+
+Table customerOrders {
+  id int [pk, increment] 
+  mainItem int [ref: > mainItem.id] 
+  sideItem int [ref: > sideItem.id] 
+  vegetable int [ref: > vegetable.id]  
+  totalPrice decimal
+}

@@ -1,10 +1,21 @@
 import { FoodTruck } from "./FoodTruck.js"
+import { purchaseOrder } from "./Sales.js"
 
-const mainContainer = document.querySelector("#container")
+const container = document.querySelector("#container")
 
-const renderAllHTML = () => {
-    mainContainer.innerHTML = FoodTruck()
+const render = async () => {
+    const html = await FoodTruck()
+    container.innerHTML = html
 }
 
-renderAllHTML()
+render()
 
+document.addEventListener("click", (event) => {
+    if (event.target.id === "purchase") {
+        purchaseOrder()
+    }
+})
+
+document.addEventListener("stateChanged", async () => {
+    await render()
+})
